@@ -1,0 +1,65 @@
+header{
+    width: 100%;
+	background-color: #f7f7f7;
+	height: 120px;
+}
+body img{
+	 float:left;
+    width:150px;
+    height:40px;
+    margin-right: 40px;
+}
+
+footer{
+  	background-color:#000000;
+}
+footer span{
+	background-color: #000000;
+	color: #FFFFFF;
+   border-radius: 10px;
+}
+
+.menu ul li{
+  padding: 10px;
+}
+.menu ul > li:hover{
+  background-color: #f96;
+}
+.menu ul ul > li:hover{
+  background-color: #69e;
+}
+.menu ul li, .menu ul{
+  display: inline-block;
+}
+.menu ul{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background-color: #f63;
+}
+.menu ul ul{
+  display: none;
+  position: absolute;
+  background-color: #369;
+  margin-top: 10px;
+  margin-left: -10px;
+}
+.menu ul a{
+  color: #fff;
+  text-decoration: none;
+}
+.menu ul ul a{
+  color: #fff;
+  text-decoration: none;
+}
+.menu li:hover ul{
+  display: block;
+}
+
+.menu li:hover li{
+  display: block;
+}
+.io{
+  width:40px;
+  height:40px;
+}
