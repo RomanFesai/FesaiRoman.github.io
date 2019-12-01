@@ -9,15 +9,15 @@ j(document).ready(function(){
 	j(".w-29").click(function(){
 
 		if(!j(".w-29").hasClass("open"))
-		{	
+		{
 			j(".w-29").addClass("open");
 			j(".DoubleMenu").css("left","0px");
 			j(".puk").css("left","0px");
 		} else
 		{
 			j(".w-29").removeClass("open");
-			j(".DoubleMenu").css("left","-1100px");	
-			j(".puk").css("left","-1100px");	
+			j(".DoubleMenu").css("left","-1100px");
+			j(".puk").css("left","-1100px");
 		}
 	});
 	j(".cent").slick({
@@ -38,7 +38,7 @@ j(document).ready(function(){
 	  	appendDots: '.dotts',
       }
     }
-  	]		
+  	]
 	});
 
 	j(".center").slick({
@@ -59,9 +59,9 @@ j(document).ready(function(){
 			appendDots: '.dots',
 		}
 	  }
-		]		
+		]
 	  });
-  
+
 	  j(".cente").slick({
 		mobileFirst: true,
 		dots:false,
@@ -80,9 +80,9 @@ j(document).ready(function(){
 			appendDots: '.dos',
 		}
 	  }
-		]		
+		]
 	  });
-  
+
 	  j(".sertificate").slick({
 	  mobileFirst: true,
 	  slidesToShow: 2,
@@ -99,6 +99,70 @@ j(document).ready(function(){
 		  initialSlide: 0,
 		}
 	  }
-		]		
+		]
 	  });
 });
+j("#Avalon").click(
+		function(){
+			sendAjaxForm('putYourHand','https://api.slapform.com/roman.fesai@yandex.ru');
+			return false;
+		}
+	);
+	j("#Avalone").click(
+		function(){
+			sendAjaxForm('putYourHand','https://api.slapform.com/roman.fesai@yandex.ru');
+			return false;
+		}
+	);
+	j("input:text").on('keydown',function(e){
+		var str = e.target.value;
+		localStorage.setItem('Name',str);
+	});
+	j("#em").on('keydown',function(e){
+		var str = e.target.value;
+		localStorage.setItem('Email',str);
+	});
+	j("#eme").on('keydown',function(e){
+		var str = e.target.value;
+		localStorage.setItem('Emaila',str);
+	});
+	j("input:text").val(localStorage.getItem("Name"));
+	j("#em").val(localStorage.getItem("Email"));
+	j("#eme").val(localStorage.getItem("Emaila"));
+
+	j(".history").click(
+		function(){
+			history.pushState(null, null, "?form=1");
+			var url_string = window.location.href
+			var url = new URL(url_string);
+			var utm = url.searchParams.get("form");
+			if (utm==1) j(".aras").show(); else
+			j(".aras").hide();
+		});
+	window.addEventListener("popstate", function(e) {
+		var url_string = window.location.href
+		var url = new URL(url_string);
+		var utm = url.searchParams.get("form");
+		if (utm==1) j(".aras").show(); else
+		j(".aras").hide();
+    	}, false)
+});
+
+function sendAjaxForm(ajax_form,url) {
+    j.ajax({
+        url:     url,
+        type:     "POST",
+        dataType: "html",
+        data: j("#"+ajax_form).serialize(),
+        success: function(response) { //Данные отправлены успешно
+        	j(".Plus").show();
+        	localStorage.clear();
+        	window.setTimeout(j(".Plus").hide(), 2*1000);
+    	},
+    	error: function(response) { // Данные не отправлены
+            console.log(0);
+            j(".Minus").show();
+            window.setTimeout(j(".Plus").hide(), 2*1000);
+    	}
+ 	});
+}
